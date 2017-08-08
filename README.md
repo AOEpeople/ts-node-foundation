@@ -1,14 +1,15 @@
 # ts-node-foundation blueprint #
 
-A basic micro service blueprint written in TypeScript transpiled on the fly for the node.js runtime. Also unit tests and coverage reports are enabled to keep quality and angibility transparency as high as possible.
+A basic micro service blueprint written in TypeScript and transpiled on the fly for the node.js runtime. Also unit tests and coverage reports are enabled to keep quality and angibility transparency as high as possible.
 
-**Contains out of the box configured**
+**Contains out of the box (pre)configured**
 
 - On the fly transpiled TypeScript using [ts-node](https://github.com/TypeStrong/ts-node)
 - UnitTests using [mocha](https://mochajs.org/) and [chai](http://chaijs.com/)
 - Coverage reports using [istanbul](https://istanbul.js.org/)
 - Preconfigured [express.js](http://expressjs.com/)
 - Coverage highlighting in Webstorm / PHPStorm / IntelliJ with less configuration
+- Production optimized run script (without entire type checking during transpile process)
 
 ### Installation ###
 
