@@ -7,8 +7,9 @@
     "postinstall": "npm run cover",
     "start": "NODE_ENV=production ./node_modules/.bin/ts-node --fast ./app/index.ts",
     "develop": "./node_modules/.bin/nodemon",
-    "test": "./node_modules/.bin/mocha -r ts-node/register app/**/*.spec.ts app/*.spec.ts",
-    "cover": "./node_modules/.bin/nyc npm test"
+    "test": "NODE_ENV=testing ./node_modules/.bin/mocha -r ts-node/register app/**/*.spec.ts app/*.spec.ts",
+    "cover": "./node_modules/.bin/nyc npm test",
+    "coveralls": "npm run cover && ./node_modules/.bin/coveralls < coverage/lcov.info"
   },
   "author": "Bernhard Behrendt",
   "license": "MIT",
@@ -28,6 +29,7 @@
     "@types/sinon-chai": "^2.7.28",
     "@types/supertest": "^2.0.2",
     "chai": "^4.1.1",
+    "coveralls": "^2.13.1",
     "mocha": "^3.5.0",
     "nodemon": "^1.11.0",
     "nyc": "^11.1.0",
@@ -52,8 +54,7 @@
       "ts-node/register"
     ],
     "reporter": [
-      "json",
-      "html"
+      "lcov"
     ],
     "all": true
   }
