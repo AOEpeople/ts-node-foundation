@@ -1,4 +1,9 @@
 {
   "module": "commonjs",
-  "sourceMap": true
+  "sourceMap": true,
+  "compilerOptions": {
+    "lib": [
+      "es2015"
+    ]
+  }
 }

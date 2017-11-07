@@ -7,3 +7,4 @@ coverage
 .coveralls.yml
 node_modules
 package-lock.json
+STATE_*

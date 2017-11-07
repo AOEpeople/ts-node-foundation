@@ -1,15 +1,15 @@
 {
   "name": "ts-node-foundation",
-  "version": "1.0.1",
+  "version": "1.4.0",
   "description": "ts-node foundation server (for building micro services) with built in unit tests and coverage support",
   "main": "app/index.ts",
   "scripts": {
-    "postinstall": "npm run cover",
+    "postinstall": "yarn run cover",
     "start": "NODE_ENV=production ./node_modules/.bin/ts-node --fast ./app/index.ts",
     "develop": "./node_modules/.bin/nodemon -L -e ts",
-    "test": "NODE_ENV=testing ./node_modules/.bin/mocha -r ts-node/register app/**/*.spec.ts app/**/**/*.spec.ts app/*.spec.ts",
-    "cover": "./node_modules/.bin/nyc npm test",
-    "coveralls": "npm run cover && ./node_modules/.bin/coveralls < coverage/lcov.info"
+    "test": "NODE_ENV=testing ./node_modules/.bin/mocha -r ts-node/register app/**/*.spec.ts app/**/**/*.spec.ts",
+    "cover": "./node_modules/.bin/nyc yarn test",
+    "coveralls": "yarn run cover && ./node_modules/.bin/coveralls < coverage/lcov.info"
   },
   "author": "Bernhard Behrendt",
   "license": "MIT",
@@ -48,7 +48,7 @@
     ],
     "exclude": [
       "app/index.ts",
-      "app/*.spec.ts",
+      "app/app.ts",
       "app/**/*.spec.ts",
       "app/interfaces/*.ts"
     ],

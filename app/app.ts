@@ -1,6 +1,9 @@
 import * as express from "express";
 import {createServer, Server} from "http";
 import * as debug from "debug";
+import {InstanceLoader} from "./classes/instance-loader";
+import {BaseController} from "./classes/base/base-controller";
+import * as bodyParser from "body-parser";
 
 export class App {
 
@@ -11,68 +14,62 @@ export class App {
 
     public log = debug('app:log');
 
+    private _controllers: string[];
+
     constructor(config: any) {
 
         this.app = express();
+
+        this.app.use(bodyParser.json());
+
         this.config = config;
+
         this.server = createServer(this.app);
         this.router = express.Router();
 
         this.log.log = console.log.bind(console);
 
-        this._routes();
+        this._loadControllers();
 
         this._run();
     }
 
-    private _routes() {
+    private loadController(controllerName: string) {
 
+        let identifier = controllerName.replace(/Controller/, '').toLowerCase();
+        let pathToFile = __dirname + '/controllers/' + identifier + '.controller';
 
-        // CREATE
-        this
-            .router
-            .post('/', (req: express.Request, res: express.Response): void => {
-                res.json({method: req.method});
-            });
+        import(pathToFile)
+             .then((Controller: any) => {
+                let controllerInstance: BaseController = InstanceLoader.getInstance(Controller, controllerName, this.router);
 
+                controllerInstance.registerEndpoints();
 
-        // READ (ALL)
-        this
-            .router
-            .get('/', (req: express.Request, res: express.Response): void => {
-                res.json({method: req.method});
-            });
+                this._applyRoutingOrLoadNextController();
+            })
 
+            .catch((error) => {
+                console.log('Issues loading '+ controllerName+':');
+                console.log(error.message);
+                this._applyRoutingOrLoadNextController();
+             });
+    }
 
-        // READ (ONE)
-        this
-            .router
-            .get('/:id', (req: express.Request, res: express.Response): void => {
-                res.json({method: req.method, itemId: req.params.id});
-            });
+    private _loadControllers() {
+        this._controllers = [].concat(this.config.controllers);
+        this.loadController(this._controllers.pop());
+    }
 
-
-        // UPDATE
-        this
-            .router
-            .put('/:id', (req: express.Request, res: express.Response): void => {
-                res.json({method: req.method, itemId: req.params.id});
-            });
-
-
-        // DELETE
-        this
-            .router
-            .delete('/:id', (req: express.Request, res: express.Response): void => {
-                res.sendStatus(204);
-            });
-
-        this.app.use(this.router);
+    private _applyRoutingOrLoadNextController(){
+        if (this._controllers.length > 0) {
+            return this.loadController(this._controllers.pop());
+        } else {
+            this.app.use(this.router);
+        }
     }
 
     private _run() {
         this.log.log('Server started on port ' + this.config.server.port);
-
         this.server.listen(this.config.server.port);
     }
 }
