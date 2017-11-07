@@ -1,40 +1,44 @@
 {
   "name": "ts-node-foundation",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "ts-node foundation server (for building micro services) with built in unit tests and coverage support",
   "main": "app/index.ts",
   "scripts": {
     "postinstall": "npm run cover",
     "start": "NODE_ENV=production ./node_modules/.bin/ts-node --fast ./app/index.ts",
-    "develop": "./node_modules/.bin/nodemon",
-    "test": "NODE_ENV=testing ./node_modules/.bin/mocha -r ts-node/register app/**/*.spec.ts app/*.spec.ts",
+    "develop": "./node_modules/.bin/nodemon -L -e ts",
+    "test": "NODE_ENV=testing ./node_modules/.bin/mocha -r ts-node/register app/**/*.spec.ts app/**/**/*.spec.ts app/*.spec.ts",
     "cover": "./node_modules/.bin/nyc npm test",
     "coveralls": "npm run cover && ./node_modules/.bin/coveralls < coverage/lcov.info"
   },
   "author": "Bernhard Behrendt",
   "license": "MIT",
   "dependencies": {
-    "debug": "^2.6.8",
-    "express": "^4.15.3",
+    "@types/bluebird": "^3.5.18",
+    "@types/body-parser": "^1.16.7",
+    "bluebird": "^3.5.1",
+    "body-parser": "^1.18.2",
+    "debug": "^3.1.0",
+    "express": "^4.16.2",
     "ts-node": "^3.3.0",
-    "typescript": "^2.4.2"
+    "typescript": "^2.6.1"
   },
   "devDependencies": {
-    "@types/chai": "^4.0.2",
+    "@types/chai": "^4.0.4",
     "@types/debug": "0.0.30",
-    "@types/express": "^4.0.36",
-    "@types/mocha": "^2.2.41",
-    "@types/node": "^8.0.19",
-    "@types/sinon": "^2.3.3",
-    "@types/sinon-chai": "^2.7.28",
-    "@types/supertest": "^2.0.2",
-    "chai": "^4.1.1",
-    "coveralls": "^2.13.1",
-    "mocha": "^3.5.0",
-    "nodemon": "^1.11.0",
-    "nyc": "^11.1.0",
-    "sinon": "^3.0.0",
-    "sinon-chai": "^2.12.0",
+    "@types/express": "^4.0.39",
+    "@types/mocha": "^2.2.44",
+    "@types/node": "^8.0.47",
+    "@types/sinon": "^2.3.7",
+    "@types/sinon-chai": "^2.7.29",
+    "@types/supertest": "^2.0.3",
+    "chai": "^4.1.2",
+    "coveralls": "^3.0.0",
+    "mocha": "^4.0.1",
+    "nodemon": "^1.12.1",
+    "nyc": "^11.2.1",
+    "sinon": "^4.0.2",
+    "sinon-chai": "^2.14.0",
     "supertest": "^3.0.0"
   },
   "nyc": {
@@ -45,7 +49,8 @@
     "exclude": [
       "app/index.ts",
       "app/*.spec.ts",
-      "app/**/*.spec.ts"
+      "app/**/*.spec.ts",
+      "app/interfaces/*.ts"
     ],
     "extension": [
       ".ts"
@@ -57,5 +62,6 @@
       "lcov"
     ],
     "all": true
-  }
+  },
+  "repository": "https://github.com/AOEPeople/ts-node-foundation"
 }
