@@ -2,12 +2,12 @@
   "name": "ts-node-foundation",
   "version": "1.4.0",
   "description": "ts-node foundation server (for building micro services) with built in unit tests and coverage support",
-  "main": "app/index.ts",
+  "main": "server/index.ts",
   "scripts": {
     "postinstall": "yarn run cover",
-    "start": "NODE_ENV=production ./node_modules/.bin/ts-node --fast ./app/index.ts",
+    "start": "NODE_ENV=production ./node_modules/.bin/ts-node --fast ./server/index.ts",
     "develop": "./node_modules/.bin/nodemon -L -e ts",
-    "test": "NODE_ENV=testing ./node_modules/.bin/mocha -r ts-node/register app/**/*.spec.ts app/**/**/*.spec.ts",
+    "test": "NODE_ENV=testing ./node_modules/.bin/mocha -r ts-node/register server/**/*.spec.ts server/**/**/*.spec.ts",
     "cover": "./node_modules/.bin/nyc yarn test",
     "coveralls": "yarn run cover && ./node_modules/.bin/coveralls < coverage/lcov.info"
   },
@@ -43,14 +43,15 @@
   },
   "nyc": {
     "include": [
-      "app/*.ts",
-      "app/**/*.ts"
+      "server/*.ts",
+      "server/**/*.ts"
     ],
     "exclude": [
-      "app/index.ts",
-      "app/app.ts",
-      "app/**/*.spec.ts",
-      "app/interfaces/*.ts"
+      "server/index.ts",
+      "server/app.ts",
+      "server/**/*.spec.ts",
+      "server/**/*.spec.ts",
+      "server/interfaces/*.ts"
     ],
     "extension": [
       ".ts"

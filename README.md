@@ -33,7 +33,7 @@ Actually it's only the server port but extend wherever additions are needed and 
 
 **File**
    
-    app/config/config.production.json
+    server/config/config.production.json
     
 **Contents:**  
    
@@ -51,12 +51,12 @@ Actually it's only the server port but extend wherever additions are needed and 
 
 Developing, QA (unit tests and coverage report) and production scripts are listed in package.json.file 
  
- | Script        | Call                | Description                                                                                              |
- |---------------|---------------------|----------------------------------------------------------------------------------------------------------|
+ | Script        | Call                 | Description                                                                                              |
+ |---------------|----------------------|----------------------------------------------------------------------------------------------------------|
  | **start**     | ``yarn start``       | Starts the app in production mode (NODE_ENV=production) with disabled type checking for faster app start |
- | **develop**   | ``yarn run develop`` | Runs the app in development mode with file change watchers (nodemon)                                     |
- | **test**      | ``yarn run test``    | Execute all unit tests                                                                                   |   
- | **cover**     | ``yarn run cover``   | Execute all unit tests and write a coverage report (HTML/JSON)                                           |
+ | **develop**   | ``yarn develop``     | Runs the app in development mode with file change watchers (nodemon)                                     |
+ | **test**      | ``yarn test``        | Execute all unit tests                                                                                   |   
+ | **cover**     | ``yarn cover``       | Execute all unit tests and write a coverage report (HTML/JSON)                                           |
  
  
 ### Debugging and Analytics ###
@@ -74,7 +74,7 @@ Developing, QA (unit tests and coverage report) and production scripts are liste
  
  Then paste line below into *Extra mocha options* and select *File Patterns* option.
  
-    -r ts-node/register app/**/*.spec.ts  app/**/**/*.spec.ts app/*.spec.ts
+    -r ts-node/register server/**/*.spec.ts  server/**/**/*.spec.ts server/*.spec.ts
 
 **Example:**
 ![Coverage highlighting setup](http://i.imgur.com/LVVrWK9.png)

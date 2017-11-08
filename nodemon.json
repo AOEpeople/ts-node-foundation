@@ -5,5 +5,5 @@
   "ignore": [
     "app/**/*.spec.ts"
   ],
-  "exec": "./node_modules/.bin/ts-node $NODE_DEBUG_OPTION  --cache-directory .tscache ./app/index.ts"
+  "exec": "./node_modules/.bin/ts-node $NODE_DEBUG_OPTION  --cache-directory .tscache ./server/index.ts"
 }

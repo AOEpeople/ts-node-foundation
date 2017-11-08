@@ -12,7 +12,7 @@ export class App {
     public server: Server;
     public router: express.Router;
 
-    public log = debug('app:log');
+    public log = debug('server:log');
 
     private _controllers: string[];
 
@@ -20,6 +20,7 @@ export class App {
 
         this.app = express();
 
+        this.app.use(express.static(__dirname + '/public'));
         this.app.use(bodyParser.json());
 
         this.config = config;
@@ -39,8 +40,9 @@ export class App {
         let identifier = controllerName.replace(/Controller/, '').toLowerCase();
         let pathToFile = __dirname + '/controllers/' + identifier + '.controller';
 
-        import(pathToFile)
-             .then((Controller: any) => {
+        import
+        (pathToFile)
+            .then((Controller: any) => {
                 let controllerInstance: BaseController = InstanceLoader.getInstance(Controller, controllerName, this.router);
 
                 controllerInstance.registerEndpoints();
@@ -49,10 +51,10 @@ export class App {
             })
 
             .catch((error) => {
-                console.log('Issues loading '+ controllerName+':');
+                console.log('Issues loading ' + controllerName + ':');
                 console.log(error.message);
                 this._applyRoutingOrLoadNextController();
-             });
+            });
     }
 
     private _loadControllers() {
@@ -60,7 +62,7 @@ export class App {
         this.loadController(this._controllers.pop());
     }
 
-    private _applyRoutingOrLoadNextController(){
+    private _applyRoutingOrLoadNextController() {
         if (this._controllers.length > 0) {
             return this.loadController(this._controllers.pop());
         } else {
