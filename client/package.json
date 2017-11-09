@@ -1,11 +1,11 @@
 {
-  "name": "client",
-  "version": "0.0.0",
+  "name": "ts-node-foundation-client",
+  "version": "0.3.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "ng serve --proxy-config proxy.conf.json --open",
+    "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

@@ -20,7 +20,7 @@ export class App {
 
         this.app = express();
 
-        this.app.use(express.static(__dirname + '/public'));
+        this.app.use(express.static(__dirname + '/../public'));
         this.app.use(bodyParser.json());
 
         this.config = config;
