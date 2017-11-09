@@ -20,7 +20,7 @@ export class App {
 
         this.app = express();
 
-        this.app.use(express.static(__dirname + '/../public'));
+        this.app.use(express.static(__dirname + '/../../public'));
         this.app.use(bodyParser.json());
 
         this.config = config;
@@ -40,8 +40,7 @@ export class App {
         let identifier = controllerName.replace(/Controller/, '').toLowerCase();
         let pathToFile = __dirname + '/controllers/' + identifier + '.controller';
 
-        import
-        (pathToFile)
+        import(pathToFile)
             .then((Controller: any) => {
                 let controllerInstance: BaseController = InstanceLoader.getInstance(Controller, controllerName, this.router);
 

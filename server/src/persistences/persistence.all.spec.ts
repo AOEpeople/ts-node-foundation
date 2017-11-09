@@ -8,7 +8,7 @@ import {PersistenceInterface} from "../interfaces/persistence.interface";
 
 let persistenceLayers = [
     new PersistenceMemory(),
-    new PersistenceFs(__dirname + '/../../data')
+    new PersistenceFs(__dirname + '/../../../data')
 ];
 
 describe('Persistence Layers', () => {
