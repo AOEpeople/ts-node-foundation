@@ -1,5 +1,5 @@
 .DS_Store
-.idea
+../client/node_modules/blocking-proxy/.idea
 .nyc_output
 .tscache
 
