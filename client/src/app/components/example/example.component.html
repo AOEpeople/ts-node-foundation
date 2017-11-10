@@ -1,3 +1,36 @@
-<p>
-  example works!
-</p>
+<div class="row">
+
+    <div class="col col-lg-6 col-sm-12">
+        <form (submit)="(edit===true)?update():create($event)">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="description">
+            <label for="description">Description</label>
+            <input type="text" id="description" name="description">
+
+            <button class="btn btn-info" type="submit">Save</button>
+            <button class="btn btn-danger" type="reset">Discard</button>
+        </form>
+    </div>
+
+    <div class="col col-lg-6 col-sm-12">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let example of examples">
+                <td>1</td>
+                <td>{{example.name}}</td>
+                <td>{{example.description}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+

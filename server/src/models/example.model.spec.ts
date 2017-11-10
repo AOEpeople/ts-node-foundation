@@ -16,7 +16,6 @@ describe('ExampleModel', () => {
         expect(model.toJSON().id).to.equal(modelData.id);
         expect(model.toJSON().name).to.equal(modelData.name);
         expect(model.toJSON().description).to.equal(null);
-        expect(model.toJSON().trash).to.equal(undefined);
     });
 
     it('Determine that properties which are part of the model definition are updated', () => {
@@ -28,7 +27,6 @@ describe('ExampleModel', () => {
         model.update(updatedProperties);
 
         expect(model.toJSON().description).to.equal(updatedProperties.description);
-        expect(model.toJSON().weirdStuff).to.equal(undefined);
     });
 
     it('Determine the name property is updated and so get and set working as expected', () => {

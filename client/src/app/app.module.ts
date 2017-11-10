@@ -9,6 +9,7 @@ import {ExampleService} from './services/example.service';
 // COMPONENTS
 import {AppComponent} from './app.component';
 import {ExampleComponent} from './components/example/example.component';
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import {ExampleComponent} from './components/example/example.component';
     ],
     imports: [
         BrowserModule,
-        HttpClientModule
+        HttpClientModule,
+        FormsModule
     ],
     providers: [ExampleService],
     bootstrap: [AppComponent]

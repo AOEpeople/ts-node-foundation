@@ -7,9 +7,8 @@ import {PersistenceMemory} from "../persistences/persistence.memory";
 import {PersistenceFs} from "../persistences/persistence.fs";
 
 export class ExampleRepository extends BaseRepository {
-    protected _properties: string[] = ['id', 'name', 'decription'];
 
-    // Both persistences provide an identical interface
+    // Both persistence layers provide an identical interface
     protected _persistence: PersistenceInterface = new PersistenceFs(__dirname + '/../../../data');
     //protected _persistence: PersistenceInterface = new PersistenceMemory();
 

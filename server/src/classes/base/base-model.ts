@@ -2,7 +2,7 @@ import {ModelInterface} from "../../interfaces/model.interface";
 
 export abstract class BaseModel implements ModelInterface {
 
-    private _modelData: any = {};
+    protected _modelData = {};
 
     protected abstract _properties: string[];
 
@@ -36,7 +36,5 @@ export abstract class BaseModel implements ModelInterface {
         return this._modelData[property];
     }
 
-    public toJSON() {
-        return JSON.parse(JSON.stringify(this._modelData));
-    }
+    public abstract toJSON()
 }
