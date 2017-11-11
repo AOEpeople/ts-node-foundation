@@ -1,21 +1,20 @@
 import {expect} from 'chai';
 import {ExampleModel} from "./example.model";
+import {ExampleDataInterface} from "../../../shared/interfaces/example-data.interface";
 
-let modelData = {
+let modelData:ExampleDataInterface = {
     id: 'A1CF43E',
     name: 'A simple test',
-    trash: 'A property which is not part of the model'
+    description: 'A property which is not part of the model'
 };
 
 describe('ExampleModel', () => {
-    let model = new ExampleModel();
+    let model = new ExampleModel(modelData);
 
     it('Determine only specified properties are applied in model as data', () => {
-        model.setAll(modelData);
-
         expect(model.toJSON().id).to.equal(modelData.id);
         expect(model.toJSON().name).to.equal(modelData.name);
-        expect(model.toJSON().description).to.equal(null);
+        expect(model.toJSON().description).to.equal(modelData.description);
     });
 
     it('Determine that properties which are part of the model definition are updated', () => {

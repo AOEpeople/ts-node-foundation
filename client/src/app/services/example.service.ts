@@ -3,7 +3,8 @@ import {HttpClient} from "@angular/common/http";
 import {environment} from '../../environments/environment';
 import {ExampleDataInterface} from "../../../../shared/interfaces/example-data.interface";
 import {Observable} from "rxjs/Observable";
-
+import {ExampleModel} from "../../../../server/src/models/example.model";
+import {Subscription} from "rxjs/Subscription";
 @Injectable()
 export class ExampleService {
 
@@ -15,12 +16,12 @@ export class ExampleService {
     }
 
     // ExampleDataInterface[] how to get this interface being ok for HTTP response
-    public fetchAll(): Observable<any> {
-        return this._httpClient.get(environment.api + '/example');
+    public fetchAll(): Observable<ExampleModel[]> {
+        return this._httpClient.get<ExampleModel[]>(environment.api + '/example');
     }
 
     public fetchOne(id: string) {
-        return this._httpClient.get(environment.api + '/example/' + id);
+        return this._httpClient.get<ExampleModel>(environment.api + '/example/' + id);
     }
 
     public update(updatedExample: ExampleDataInterface) {

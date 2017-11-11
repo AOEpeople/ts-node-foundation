@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {ExampleService} from "../../services/example.service";
 import {ExampleDataInterface} from "../../../../../shared/interfaces/example-data.interface";
+import {ExampleModel} from "../../../../../server/src/models/example.model";
 
 @Component({
     selector: 'app-example',
@@ -10,7 +11,10 @@ import {ExampleDataInterface} from "../../../../../shared/interfaces/example-dat
 })
 export class ExampleComponent implements OnInit {
 
-    public examples: ExampleDataInterface[];
+    public examples: ExampleModel[] = [];
+    public model: ExampleModel;
+    public editing: boolean = false;
+    public details: boolean = false;
 
     constructor(private exampleService: ExampleService) {
     }
@@ -19,47 +23,75 @@ export class ExampleComponent implements OnInit {
         this.fetchAll();
     }
 
-    public create(event: any) {
+    public createNewItem() {
+        this.model = new ExampleModel({});
+    }
 
-        console.log(event.target);
+    public create() {
+        if (!this.model) {
+            this.model = new ExampleModel({});
+        } else {
+            this
+                .exampleService
+                .create(this.model)
+                .subscribe((createSuccessful: boolean) => {
+                    if (createSuccessful) {
+                        delete this.model;
+                        this.fetchAll();
+                    }
+                });
+        }
+    }
 
-        this.exampleService.create({
-            id: 'sdfdsf',
-            name: 'dfdsfdsds',
-            description: 'sdasdasda'
-        }).subscribe((createSuccessful: boolean) => {
-            if (createSuccessful) {
-                this.fetchAll();
-            }
-        });
+    public reset() {
+        delete this.model;
+    }
+
+    public edit() {
+        this.editing = true;
     }
 
     public update(example: ExampleDataInterface) {
-        this.exampleService.update(example).subscribe((result) => {
-            console.log(result);
-        });
+
+        this.editing = false;
+
+        this
+            .exampleService
+            .update(example)
+            .subscribe((result) => {
+                this.model = new ExampleModel({});
+                this.fetchAll();
+            });
     }
 
-
     public fetchAll() {
+
+        this.examples = [];
+
         this
             .exampleService
             .fetchAll()
-            .subscribe((examples: ExampleDataInterface[]) => this.examples = examples);
+            .subscribe((examples: ExampleDataInterface[]) => {
+                examples.forEach((example: ExampleDataInterface) => {
+                    this.examples.push(new ExampleModel(example));
+                });
+            });
     }
 
-
-    public fetchOne(id: string) {
-        this
-            .exampleService
-            .fetchOne(id)
-            .subscribe((example: ExampleDataInterface) => this.examples = [example]);
-
-    }
+    // public fetchOne(id: string) {
+    //     this
+    //         .exampleService
+    //         .fetchOne(id)
+    //         .subscribe((example: ExampleDataInterface) => this.examples = [example]);
+    //
+    // }
 
     public remove(id: string) {
-        this.exampleService.remove(id).subscribe((result) => {
-            console.log(result);
-        });
+        this
+            .exampleService
+            .remove(id)
+            .subscribe((result) => {
+                console.log(result);
+            });
     }
 }

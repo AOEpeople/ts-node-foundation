@@ -13,8 +13,7 @@ export class ExampleRepository extends BaseRepository {
     //protected _persistence: PersistenceInterface = new PersistenceMemory();
 
     protected _getModel(modelData): ModelInterface {
-        let model = new ExampleModel();
-        model.setAll(modelData);
+        let model = new ExampleModel(modelData);
         return model;
     }
 }

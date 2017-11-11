@@ -23,8 +23,8 @@ describe('Persistence Layers', () => {
                 id: '4353BAF123EE',
                 name: 'A simple second test'
             };
-            let firstModel = new ExampleModel();
-            let secondModel = new ExampleModel();
+            let firstModel = new ExampleModel(firstModelData);
+            let secondModel = new ExampleModel(secondModelData);
 
             let className = persistence
                 .constructor
@@ -33,8 +33,8 @@ describe('Persistence Layers', () => {
 
             describe(className, () => {
 
-                firstModel.setAll(firstModelData);
-                secondModel.setAll(secondModelData);
+              //  firstModel.setAll(firstModelData);
+               // secondModel.setAll(secondModelData);
 
                 it('Should create two new items', (done) => {
                     persistence
