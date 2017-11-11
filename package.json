@@ -1,7 +1,7 @@
 {
   "name": "ts-node-foundation",
   "version": "0.0.0",
-  "main": "index.js",
+  "main": "yarn start",
   "repository": "https://github.com/AOEpeople/ts-node-foundation",
   "author": "Bernhard Behrendt <bernhard.behrendt@aoe.com>",
   "license": "MIT",

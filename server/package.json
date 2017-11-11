@@ -5,9 +5,9 @@
   "main": "index.ts",
   "scripts": {
     "postinstall": "yarn run cover",
-    "start": "NODE_ENV=production ./node_modules/.bin/ts-node --fast ./src/index.ts",
+    "start": "NODE_ENV=production ./node_modules/.bin/ts-node --fast src/index.ts",
     "develop": "./node_modules/.bin/nodemon -L -e ts",
-    "test": "NODE_ENV=testing ./node_modules/.bin/mocha -r ts-node/register ./src/**/*.spec.ts ./src/**/**/*.spec.ts",
+    "test": "NODE_ENV=testing ./node_modules/.bin/mocha -r ts-node/register src/**/*.spec.ts src/**/**/*.spec.ts ../shared/**/*.ts",
     "cover": "./node_modules/.bin/nyc yarn test",
     "coveralls": "yarn run cover && ./node_modules/.bin/coveralls < coverage/lcov.info"
   },
@@ -43,14 +43,12 @@
   },
   "nyc": {
     "include": [
-      "./src/*.ts",
-      "./src/**/*.ts"
+      "src/*.ts",
+      "src/**/*.ts"
     ],
     "exclude": [
-      "./src/index.ts",
-      "./src/app.ts",
-      "./src/**/*.spec.ts",
-      "./src/interfaces/*.ts"
+      "src/index.ts",
+      "src/app.ts"
     ],
     "extension": [
       ".ts"

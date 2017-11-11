@@ -2,7 +2,14 @@
 @import "../node_modules/tether/dist/css/tether-theme-basic.css";
 @import "../node_modules/bootstrap/scss/bootstrap";
 
+@import "bootstrap-theme-override";
+
+
+$color-background-main: #4b657f;
+$color-text-main: #ffffff;
+$color-button-main: #f55195;
+
 body {
-  background-color: #7796a4;
-  color: #172223;
+  background-color: $color-background-main;
+  color: $color-text-main;
 }

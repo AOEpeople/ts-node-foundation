@@ -1,9 +1,7 @@
 import {ModelInterface} from "../../interfaces/model.interface";
 
 export abstract class BaseModel implements ModelInterface {
-
-    protected _modelData = {};
-
+    
     protected abstract _properties: string[];
 
     public setAll(modelData: any) {
@@ -11,7 +9,7 @@ export abstract class BaseModel implements ModelInterface {
             this
                 ._properties
                 .forEach((propertyName: string) => {
-                    this._modelData[propertyName] = modelData[propertyName] || null;
+                    this[propertyName] = modelData[propertyName] || null;
                 });
         }
     }
@@ -27,13 +25,13 @@ export abstract class BaseModel implements ModelInterface {
     }
 
     public set(property: string, value: any) {
-        if (property.length > 0 && this._modelData[property] !== undefined) {
-            this._modelData[property] = value;
+        if (property.length > 0 && this[property] !== undefined) {
+            this[property] = value;
         }
     }
 
     public get(property: string): any {
-        return this._modelData[property];
+        return this[property];
     }
 
     public abstract toJSON()
