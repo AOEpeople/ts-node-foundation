@@ -44,6 +44,7 @@
                 <th>#</th>
                 <th>Name</th>
                 <th>Description</th>
+                <th>Actions</th>
             </tr>
             </thead>
             <tbody>
@@ -51,6 +52,12 @@
                 <th>{{idx}}</th>
                 <td>{{example.name}}</td>
                 <td>{{example.description}}</td>
+                <th>
+                    <div class="btn-group">
+                        <button (click)="edit(example)" class="btn btn-sm btn-primary">EDIT</button>
+                        <button (click)="remove(example.id)" class="btn btn-sm btn-danger">DEL</button>
+                    </div>
+                </th>
             </tr>
             </tbody>
         </table>

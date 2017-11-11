@@ -47,19 +47,18 @@ export class ExampleComponent implements OnInit {
         delete this.model;
     }
 
-    public edit() {
+    public edit(model: ExampleModel) {
         this.editing = true;
+        this.model = model;
     }
 
-    public update(example: ExampleDataInterface) {
-
-        this.editing = false;
-
+    public update() {
         this
             .exampleService
-            .update(example)
-            .subscribe((result) => {
-                this.model = new ExampleModel({});
+            .update(this.model)
+            .subscribe(() => {
+                delete this.model;
+                this.editing = false;
                 this.fetchAll();
             });
     }
@@ -91,7 +90,8 @@ export class ExampleComponent implements OnInit {
             .exampleService
             .remove(id)
             .subscribe((result) => {
-                console.log(result);
+                this.fetchAll();
+                delete this.model;
             });
     }
 }
