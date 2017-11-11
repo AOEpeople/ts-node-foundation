@@ -21,7 +21,7 @@ export class ExampleComponent implements OnInit {
 
     public create(event: any) {
 
-        console.log(event);
+        console.log(event.target);
 
         this.exampleService.create({
             id: 'sdfdsf',

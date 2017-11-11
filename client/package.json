@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --proxy-config proxy.conf.json --open",
+    "start": "yarn run develop",
+    "develop": "ng serve --proxy-config proxy.conf.json --open",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",

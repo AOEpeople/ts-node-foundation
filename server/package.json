@@ -1,5 +1,5 @@
 {
-  "name": "ts-node-foundation",
+  "name": "ts-node-foundation-server",
   "version": "1.5.0",
   "description": "ts-node foundation server (for building micro services) with built in unit tests and coverage support",
   "main": "index.ts",
