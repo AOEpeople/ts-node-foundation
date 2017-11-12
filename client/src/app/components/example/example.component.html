@@ -1,6 +1,6 @@
 <div class="row">
 
-    <div *ngIf="details" class="example-details col offset-lg-3 col-lg-6 col-sm-12">
+    <div *ngIf="details" class="example-details  col col-12 offset-sm-3 col-sm-6">
         <h3>Details:</h3>
         #{{model.id}}
         {{model.name}}
@@ -10,7 +10,7 @@
     </div>
 
 
-    <div class="examples-form col offset-lg-3 col-lg-6 col-sm-12">
+    <div class="examples-form col col-12 offset-sm-3 col-sm-6">
         <button *ngIf="!model" (click)="createNewItem()" class="btn btn-lg btn-block btn-primary">Add</button>
         <form *ngIf="model" (submit)="(editing===true)?update():create()">
             <div class="form-group">
@@ -37,7 +37,7 @@
         </form>
     </div>
 
-    <div *ngIf="examples.length>0" class="examples-list col offset-lg-3 col-lg-6 col-sm-12">
+    <div *ngIf="examples.length>0" class="examples-list col col-12 offset-sm-3 col-sm-6">
         <table class="table table-striped table-inverse" style="table-layout: fixed">
             <thead class="thead-inverse">
             <tr>
