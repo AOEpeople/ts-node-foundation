@@ -26,6 +26,7 @@
     "core-js": "^2.4.1",
     "font-awesome": "^4.7.0",
     "jquery": "^3.2.1",
+    "open-iconic": "^1.1.1",
     "rxjs": "^5.5.2",
     "tether": "^1.4.0",
     "zone.js": "^0.8.14"

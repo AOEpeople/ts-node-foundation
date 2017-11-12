@@ -38,24 +38,24 @@
     </div>
 
     <div class="examples-list col offset-lg-3 col-lg-6 col-sm-12">
-        <table class="table table-bordered table-inverse">
+        <table class="table table-striped table-inverse" style="table-layout: fixed">
             <thead class="thead-inverse">
             <tr>
                 <th>#</th>
                 <th>Name</th>
                 <th>Description</th>
-                <th>Actions</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let example of examples;let idx = index">
-                <th>{{idx}}</th>
-                <td>{{example.name}}</td>
-                <td>{{example.description}}</td>
-                <th>
+                <th class="indexes">{{idx+1}}</th>
+                <td class="names">{{example.name}}</td>
+                <td class="description">{{example.description}}</td>
+                <th class="actions text-right">
                     <div class="btn-group">
-                        <button (click)="edit(example)" class="btn btn-sm btn-primary">EDIT</button>
-                        <button (click)="remove(example.id)" class="btn btn-sm btn-danger">DEL</button>
+                        <button (click)="edit(example)" class="btn action btn-sm btn-primary"><span class="oi" data-glyph="pencil"></span></button>
+                        <button (click)="remove(example.id)" class="btn action btn-sm btn-danger"><span class="oi" data-glyph="trash"></span></button>
                     </div>
                 </th>
             </tr>
