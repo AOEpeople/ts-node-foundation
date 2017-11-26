@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {ExampleService} from "../../services/example.service";
 import {ExampleDataInterface} from "../../../../../shared/interfaces/example-data.interface";
+import {TranslateService} from "@ngx-translate/core";
+import {ExampleService} from "../../services/example.service";
 import {ExampleModel} from "../../../../../server/src/models/example.model";
 
 @Component({
@@ -16,7 +17,7 @@ export class ExampleComponent implements OnInit {
     public editing: boolean = false;
     public details: boolean = false;
 
-    constructor(private exampleService: ExampleService) {
+    constructor(private exampleService: ExampleService, private translate: TranslateService) {
     }
 
     ngOnInit() {

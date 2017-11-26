@@ -1,3 +1,4 @@
+import {createHash} from "crypto";
 import * as Promise from "bluebird";
 import {PersistenceInterface} from "../../interfaces/persistence.interface";
 import {ModelInterface} from "../../interfaces/model.interface";
@@ -9,6 +10,10 @@ export abstract class BasePersistence implements PersistenceInterface {
     protected abstract _fetch(id: string): Promise<any>
     protected abstract _update(id: string, model: ModelInterface): Promise<boolean>
     protected abstract _remove(id: string): Promise<boolean>
+
+    protected _getHashString(inputString: string): string {
+        return createHash('sha256').update(inputString).digest('hex');
+    }
 
     public create(model: ModelInterface): Promise<boolean> {
         return this._create(model);

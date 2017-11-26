@@ -7,8 +7,24 @@ export class PersistenceMemory extends BasePersistence {
     private _storage: any[] = [];
 
     protected _create(model: ModelInterface): Promise<boolean> {
-        this._storage.push(model.toJSON());
-        return new Promise((resolve: any) => resolve(true));
+        let exists,
+            resolveResult = true,
+            modelData = model.toJSON();
+
+
+        modelData.id = modelData.id || this._getHashString(JSON.stringify(model.toJSON()));
+
+        exists = this._storage.some((storageItem): boolean => {
+            return storageItem.id === modelData.id;
+        });
+
+        if (exists) {
+            resolveResult = false;
+        } else {
+            this._storage.push(model.toJSON());
+        }
+
+        return new Promise((resolve: any) => resolve(resolveResult));
     }
 
     protected _fetchAll(): Promise<Array<any>> {

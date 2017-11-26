@@ -33,9 +33,6 @@ describe('Persistence Layers', () => {
 
             describe(className, () => {
 
-              //  firstModel.setAll(firstModelData);
-               // secondModel.setAll(secondModelData);
-
                 it('Should create two new items', (done) => {
                     persistence
                         .create(firstModel)
@@ -45,11 +42,16 @@ describe('Persistence Layers', () => {
                                 .create(secondModel)
                                 .then((persisted) => {
                                     expect(persisted).to.equal(true);
-                                    done();
+
+                                    // Try to recreate an already existing item
+                                    persistence
+                                        .create(secondModel)
+                                        .then((persisted) => {
+                                            expect(persisted).to.equal(false);
+                                            done();
+                                        });
                                 });
                         });
-
-
                 });
 
                 it('Should fetch all items from persistence layer', () => {

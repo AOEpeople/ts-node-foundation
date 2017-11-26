@@ -40,8 +40,7 @@ export class App {
         let identifier = controllerName.replace(/Controller/, '').toLowerCase();
         let pathToFile = __dirname + '/controllers/' + identifier + '.controller';
 
-        import(pathToFile)
-            .then((Controller: any) => {
+        import(pathToFile).then((Controller: any) => {
                 let controllerInstance: BaseController = InstanceLoader.getInstance(Controller, controllerName, this.router);
 
                 controllerInstance.registerEndpoints();

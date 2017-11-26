@@ -16,23 +16,48 @@ export abstract class BaseController {
     public registerEndpoints() {
 
         this._router.post(this._endpoint, (req: express.Request, res: express.Response): void => {
-            this._create(req.body).then((result: any) => res.json(result));
+            this
+                ._create(req.body)
+                .then((result: any) => res.json(result))
+                .catch((error) => {
+                    res.json(error.message);
+                });
         });
 
         this._router.get(this._endpoint, (req: express.Request, res: express.Response): void => {
-            this._fetchAll().then((result: any) => res.json(result));
+            this
+                ._fetchAll()
+                .then((result: any) => res.json(result))
+                .catch((error) => {
+                    res.json(error.message);
+                });
         });
 
         this._router.get(this._endpoint + '/:id', (req: express.Request, res: express.Response): void => {
-            this._fetch(req.params.id).then((result: any) => res.json(result));
+            this
+                ._fetch(req.params.id)
+                .then((result: any) => res.json(result))
+                .catch((error) => {
+                    res.json(error.message);
+                });
         });
 
         this._router.put(this._endpoint + '/:id', (req: express.Request, res: express.Response): void => {
-            this._update(req.params.id, req.body).then((result: any) => res.json(result));
+            this
+                ._update(req.params.id, req.body)
+                .then((result: any) => res.json(result))
+                .catch((error) => {
+                    res.json(error.message);
+                });
         });
 
         this._router.delete(this._endpoint + '/:id', (req: express.Request, res: express.Response): void => {
-            this._remove(req.params.id).then((result: any) => res.json(result));
+            this
+                ._remove(req.params.id)
+                .then((result: any) => res.json(result))
+                .catch((error) => {
+                    res.json(error.message);
+                });
         });
     }
 
@@ -40,7 +65,7 @@ export abstract class BaseController {
         return this._repository.create(payload);
     }
 
-    protected _fetchAll(): Promise<Array<any>> {
+    protected _fetchAll(): Promise<any> {
         return this._repository.fetchAll()
     }
 

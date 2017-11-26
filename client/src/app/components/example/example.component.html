@@ -1,23 +1,24 @@
 <div class="row">
 
     <div *ngIf="details" class="example-details  col col-12 offset-sm-3 col-sm-6">
-        <h3>Details:</h3>
+        <h3 [innerText]="'COMPONENTS.EXAMPLE.HEADLINE'|translate"></h3>
         #{{model.id}}
         {{model.name}}
         {{model.description}}
-        <button (click)="edit(model)" class="btn btn-block btn-info">Edit</button>
-        <button (click)="remove(model.id)" class="btn btn-block btn-danger">Remove</button>
+        <button (click)="edit(model)" class="btn btn-block btn-info">{{'EDIT'|translate}}</button>
+        <button (click)="remove(model.id)" class="btn btn-block btn-danger">{{'REMOVE'|translate}}</button>
     </div>
 
 
     <div class="examples-form col col-12 offset-sm-3 col-sm-6">
-        <button *ngIf="!model" (click)="createNewItem()" class="btn btn-lg btn-block btn-primary">Add</button>
+        <button *ngIf="!model" (click)="createNewItem()" class="btn btn-lg btn-block btn-primary">{{'ADD'|translate}}
+        </button>
         <form *ngIf="model" (submit)="(editing===true)?update():create()">
             <div class="form-group">
 
                 <input [(ngModel)]="model.id" type="hidden" id="id" name="description">
                 <input [(ngModel)]="model.name"
-                       placeholder="Name"
+                       [placeholder]="'MODELS.EXAMPLE.NAME'|translate"
                        type="text"
                        id="name"
                        name="name"
@@ -25,15 +26,16 @@
                 >
 
                 <input [(ngModel)]="model.description"
-                       placeholder="Description"
+                       [placeholder]="'MODELS.EXAMPLE.DESCRIPTION'|translate"
                        type="text"
                        id="description"
                        name="description"
                        class="form-control form-control-lg">
 
             </div>
-            <button class="btn btn-lg btn-block btn-primary" type="submit">Save</button>
-            <button (click)="reset()" class="btn btn-lg btn-block btn-danger" type="reset">Discard</button>
+            <button class="btn btn-lg btn-block btn-primary" type="submit">{{'SAVE'|translate}}</button>
+            <button (click)="reset()" class="btn btn-lg btn-block btn-danger" type="reset">{{'DISCARD'|translate}}
+            </button>
         </form>
     </div>
 
@@ -42,8 +44,8 @@
             <thead class="thead-inverse">
             <tr>
                 <th>#</th>
-                <th>Name</th>
-                <th>Description</th>
+                <th>{{'MODELS.EXAMPLE.NAME'|translate}}</th>
+                <th>{{'MODELS.EXAMPLE.DESCRIPTION'|translate}}</th>
                 <th></th>
             </tr>
             </thead>

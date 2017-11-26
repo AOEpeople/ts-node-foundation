@@ -1,7 +1,10 @@
 // MODULES
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {HttpClientModule} from '@angular/common/http';
+import {FormsModule} from "@angular/forms";
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {HttpLoaderFactory} from "./factories/translate-http-loader";
 
 // SERVICES
 import {ExampleService} from './services/example.service';
@@ -9,8 +12,6 @@ import {ExampleService} from './services/example.service';
 // COMPONENTS
 import {AppComponent} from './app.component';
 import {ExampleComponent} from './components/example/example.component';
-import {FormsModule} from "@angular/forms";
-
 
 @NgModule({
     declarations: [
@@ -20,7 +21,14 @@ import {FormsModule} from "@angular/forms";
     imports: [
         BrowserModule,
         HttpClientModule,
-        FormsModule
+        FormsModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: (HttpLoaderFactory),
+                deps: [HttpClient]
+            }
+        })
     ],
     providers: [ExampleService],
     bootstrap: [AppComponent]

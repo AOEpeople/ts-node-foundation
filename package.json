@@ -1,12 +1,13 @@
 {
   "name": "ts-node-foundation",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "main": "yarn start",
   "repository": "https://github.com/AOEpeople/ts-node-foundation",
   "author": "Bernhard Behrendt <bernhard.behrendt@aoe.com>",
   "license": "MIT",
-  "scripts":{
-    "start": "concurrently \"cd ./server/ && yarn run develop\" \" cd ./client/ && yarn run develop\""
+  "scripts": {
+    "build": "./node_modules/.bin/concurrently \"cd ./server/ && yarn install\" \" cd ./client/ && yarn install && yarn build\"",
+    "start": "./node_modules/.bin/concurrently \"cd ./server/ && yarn run develop\" \" cd ./client/ && yarn run develop\""
   },
   "dependencies": {
     "concurrently": "^3.5.0"

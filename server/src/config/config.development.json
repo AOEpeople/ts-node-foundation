@@ -1,5 +1,7 @@
 {
   "server": {
+    "protocol":"http",
+    "domain":"localhost:4200",
     "port": 4000
   },
   "controllers": [

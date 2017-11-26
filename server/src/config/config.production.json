@@ -1,6 +1,8 @@
 {
   "server": {
-    "port": 8080
+    "protocol":"https",
+    "domain":"my.production.domain",
+    "port": 4001
   },
   "controllers": [
     "ExampleController"
