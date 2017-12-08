@@ -1,6 +1,6 @@
 {
   "name": "ts-node-foundation-client",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -24,11 +24,12 @@
     "@angular/router": "^5.0.0",
     "@ngx-translate/core": "^8.0.0",
     "@ngx-translate/http-loader": "^2.0.0",
-    "bootstrap": "4.0.0-alpha.6",
+    "bootstrap": "4.0.0-beta.2",
     "core-js": "^2.4.1",
     "font-awesome": "^4.7.0",
     "jquery": "^3.2.1",
     "open-iconic": "^1.1.1",
+    "popper.js": "^1.12.9",
     "rxjs": "^5.5.2",
     "tether": "^1.4.0",
     "zone.js": "^0.8.14"
