@@ -1,5 +1,5 @@
 
-[![Coverage Status](https://coveralls.io/repos/github/AOEpeople/ts-node-foundation/badge.svg?branch=master)](https://coveralls.io/github/AOEpeople/ts-node-foundation?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/AOEpeople/ts-node-foundation/badge.svg?branch=master?1234567890)](https://coveralls.io/github/AOEpeople/ts-node-foundation?branch=master)
 
 # ts-node-foundation blueprint #
 
