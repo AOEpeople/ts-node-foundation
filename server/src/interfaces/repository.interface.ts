@@ -4,4 +4,5 @@ export interface RepositoryInterface {
     fetch: Function;
     update: Function;
     remove: Function;
+    disconnect?: Function;
 }

@@ -24,6 +24,9 @@ export class PersistenceFs extends BasePersistence {
                             });
 
                         break;
+                    default:
+                        break;
+
                 }
             });
     }
@@ -33,12 +36,10 @@ export class PersistenceFs extends BasePersistence {
         let id = modelData.id || this._getHashString(JSON.stringify(modelData));
 
         return Promise
-            .promisify(stat)(this._targetDir + '/' + id).then((exists)=>{
-                console.log('ARRIVE HERE due to existence');
+            .promisify(stat)(this._targetDir + '/' + id).then((exists) => {
                 return false;
             })
             .catch((error) => {
-                console.log('File does not exist... creating it');
                 return new Promise((resolve: any) => {
 
                     let fileName = modelData.id || this._getHashString(JSON.stringify(modelData));

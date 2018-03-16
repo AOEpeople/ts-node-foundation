@@ -41,12 +41,12 @@ export class App {
         let pathToFile = __dirname + '/controllers/' + identifier + '.controller';
 
         import(pathToFile).then((Controller: any) => {
-                let controllerInstance: BaseController = InstanceLoader.getInstance(Controller, controllerName, this.router);
+            let controllerInstance: BaseController = InstanceLoader.getInstance(Controller, controllerName, this.router);
 
-                controllerInstance.registerEndpoints();
+            controllerInstance.registerEndpoints();
 
-                this._applyRoutingOrLoadNextController();
-            })
+            this._applyRoutingOrLoadNextController();
+        })
 
             .catch((error) => {
                 console.log('Issues loading ' + controllerName + ':');

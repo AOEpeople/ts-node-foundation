@@ -4,4 +4,5 @@ export interface PersistenceInterface {
     fetch: Function;
     update: Function;
     remove: Function;
+    disconnect?: Function;
 }

@@ -6,10 +6,11 @@
   "author": "Bernhard Behrendt <bernhard.behrendt@aoe.com>",
   "license": "MIT",
   "scripts": {
+    "postinstall": "cd ./server/ && yarn install && cd .. &&  cd ./client/ && yarn install",
     "build": "./node_modules/.bin/concurrently \"cd ./server/ && yarn install\" \" cd ./client/ && yarn install && yarn build\"",
     "start": "./node_modules/.bin/concurrently \"cd ./server/ && yarn run develop\" \" cd ./client/ && yarn run develop\""
   },
   "dependencies": {
-    "concurrently": "^3.5.0"
+    "concurrently": "^3.5.1"
   }
 }

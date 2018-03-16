@@ -52,4 +52,14 @@ export abstract class BaseRepository implements RepositoryInterface {
     public remove(id: string): Promise<boolean> {
         return this._persistence.remove(id);
     }
+
+    public disconnect() {
+        if (!!this._persistence.disconnect) {
+            return this._persistence.disconnect();
+        } else {
+            return new Promise((resolve) => {
+                resolve(true);
+            });
+        }
+    }
 }
