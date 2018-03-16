@@ -1,6 +1,3 @@
-
-[![Coverage Status](https://coveralls.io/repos/github/AOEpeople/ts-node-foundation/badge.svg?branch=master)](https://coveralls.io/github/AOEpeople/ts-node-foundation?branch=master)
-
 # ts-node-foundation blueprint #
 
 A basic micro service blueprint written in TypeScript and transpiled on the fly for the node.js runtime.
